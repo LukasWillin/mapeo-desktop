@@ -10,18 +10,16 @@
     "node": "6.2.1"
   },
   "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder --publish=onTagOrDraft",
     "build": "npm run build:id",
     "build:id": "node bin/build_id_editor.js",
-    "clean": "rimraf \"dist/Mapeo-win32-x64\"",
-    "package-win": "node bin/package_windows.js",
-    "installer-win": "node bin/create_windows_installer.js",
-    "dmg-mac": "node bin/create_macos_dmg.js",
-    "package-mac": "node bin/package_macos.js",
+    "clean": "rimraf \"dist/\"",
     "rebuild-leveldb": "cd node_modules/leveldown && cross-env HOME=~/.electron-gyp node-gyp rebuild --target=1.7.5 --runtime=electron --arch=x64 --dist-url=https://atom.io/download/atom-shell",
     "start": "electron app.js --disable-http-cache",
     "server": "node app.js --headless",
-    "dev": "electron app.js --debug --disable-http-cache",
-    "postinstall": "npmpd"
+    "dev": "electron app.js --debug --disable-http-cache"
   },
   "repository": {
     "type": "git",
@@ -39,7 +37,8 @@
   "contributors": [
     "substack",
     "Gregor MacLennan <gmaclennan@digital-democracy.org>",
-    "noffle"
+    "noffle",
+    "karissa"
   ],
   "license": "MIT",
   "bugs": {
@@ -100,9 +99,29 @@
     "cross-spawn": "^4.0.2",
     "devtron": "^1.2.0",
     "electron": "1.7.5",
-    "electron-packager": "^7.6.0",
+    "electron-builder": "^20.8.1",
     "fs-extra": "^0.30.0",
     "npm-platform-dependencies": "0.0.12",
     "watchify": "^3.7.0"
+  },
+  "build": {
+    "appId": "org.digital-democracy.mapeo-desktop",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 220,
+          "y": 200
+        },
+        {
+          "x": 448,
+          "y": 200,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
   }
 }
