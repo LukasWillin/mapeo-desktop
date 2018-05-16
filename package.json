@@ -1,10 +1,10 @@
 {
-  "name": "mapeo-desktop",
+  "name": "mapeo-desktop-bmf",
   "description": "An experimental offline mapping app based on iD Editor, for indigenous territory mapping in remote environments",
-  "productName": "Mapeo",
+  "productName": "MapeoBMF",
   "version": "2.1.0",
   "productDescription": "Offline Map Editor",
-  "author": "Digital Democracy",
+  "author": "Creators: Digital Democracy, Fork: LukasWillin",
   "main": "app.js",
   "engine": {
     "node": "6.2.1"
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/digidem/mapeo-desktop.git"
+    "url": "git+https://github.com/LukasWillin/mapeo-desktop-bmf.git"
   },
   "keywords": [
     "osm",
@@ -32,18 +32,22 @@
     "gis",
     "maps",
     "iD",
-    "osm-p2p"
+    "osm-p2p",
+    "bmf",
+    "Bruno Manser Fonds"
   ],
   "contributors": [
     "substack",
     "Gregor MacLennan <gmaclennan@digital-democracy.org>",
-    "noffle"
+    "noffle",
+    "LukasWillin",
+    "karissa"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/digidem/mapeo-desktop/issues"
+    "url": "https://github.com/LukasWillin/mapeo-desktop-bmf/issues"
   },
-  "homepage": "https://github.com/digidem/mapeo-desktop#readme",
+  "homepage": "https://github.com/LukasWillin/mapeo-desktop-bmf#readme",
   "dependencies": {
     "JSONStream": "^1.0.3",
     "application-config": "^1.0.1",

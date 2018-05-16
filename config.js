@@ -2,8 +2,8 @@ var appConfig = require('application-config')('Mapeo')
 var path = require('path')
 var pathExists = require('path-exists')
 
-var APP_NAME = 'Mapeo'
-var APP_TEAM = 'Digital Democracy'
+var APP_NAME = 'MapeoBMF'
+var APP_TEAM = 'Creators: Digital Democracy, Forker: Lukas Willin'
 var APP_VERSION = require('./package.json').version
 
 module.exports = {
@@ -20,8 +20,8 @@ module.exports = {
 
   CONFIG_PATH: getConfigPath(),
 
-  GITHUB_URL: 'https://github.com/digidem/mapeo-desktop',
-  GITHUB_URL_RAW: 'https://raw.githubusercontent.com/digidem/mapeo-desktop/master',
+  GITHUB_URL: 'https://github.com/LukasWillin/mapeo-desktop-bmf',
+  GITHUB_URL_RAW: 'https://raw.githubusercontent.com/LukasWillin/mapeo-desktop-bmf/master',
 
   IS_PORTABLE: isPortable(),
   IS_PRODUCTION: isProduction(),
