@@ -2,5 +2,9 @@ node_modules
 vendor
 dist
 examples/.dat
+<<<<<<< HEAD
 git_modules
 package-lock.json
+=======
+static/build.js
+>>>>>>> f6362ecb30effa98a19484373f51b54fb82152d9

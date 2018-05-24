@@ -1,15 +1,42 @@
-var fs = require('fs')
+var path = require('path')
 var dialog = require('electron').dialog
-var userConfig = require('./user-config')
-var exportData = require('./export-data')
-var i18n = require('./i18n')
 var electron = require('electron')
+
+var userConfig = require('./lib/user-config')
+var exportData = require('./lib/export-data')
+var i18n = require('./lib/i18n')
 
 module.exports = function (app) {
   var template = [
     {
       label: i18n('menu-file'),
       submenu: [
+        {
+          label: i18n('menu-import-tiles'),
+          click: function (item, focusedWindow) {
+            dialog.showOpenDialog({
+              title: i18n('menu-import-tiles'),
+              filters: [{name: 'Offline Maps'}],
+              properties: ['openFile', 'openDirectory']
+            }, function (filenames) {
+              if (!filenames) return
+              app.tiles.go(filenames[0], cb)
+              function cb (err) {
+                if (err) {
+                  dialog.showErrorBox(
+                    i18n('menu-import-tiles-error'),
+                    i18n('menu-import-tiles-error-known') + ': ' + err
+                  )
+                } else {
+                  dialog.showMessageBox({
+                    message: i18n('menu-import-data-success'),
+                    buttons: ['OK']
+                  })
+                }
+              }
+            })
+          }
+        },
         {
           label: i18n('menu-import-configuration'),
           click: function (item, focusedWindow) {
@@ -116,6 +143,14 @@ module.exports = function (app) {
       label: i18n('menu-visualization'),
       submenu: [
         {
+          label: i18n('menu-change-language'),
+          click: function (item, focusedWindow) {
+            if (focusedWindow) {
+              focusedWindow.webContents.send('change-language-request')
+            }
+          }
+        },
+        {
           label: i18n('menu-visualization-reload'),
           accelerator: 'CmdOrCtrl+R',
           click: function (item, focusedWindow) {
@@ -166,10 +201,7 @@ module.exports = function (app) {
         {
           label: i18n('menu-zoom-to-latlon'),
           click: function (item, focusedWindow) {
-            var win = createLatLonDialogWindow()
-            electron.ipcMain.once('close-latlon-dialog', function () {
-              if (win) win.close()
-            })
+            focusedWindow.webContents.send('open-latlon-dialog')
           },
           visible: true
         }
@@ -255,24 +287,6 @@ module.exports = function (app) {
     )
   }
   return template
-}
-
-function createLatLonDialogWindow () {
-  var INDEX = 'file://' + require('path').resolve(__dirname, '../browser/latlon_dialog.html')
-  var winOpts = {
-    width: 300,
-    height: 200,
-    modal: true,
-    show: false,
-    alwaysOnTop: true
-  }
-  var win = new electron.BrowserWindow(winOpts)
-  win.once('ready-to-show', function () {
-    win.setMenu(null)
-    win.show()
-  })
-  win.loadURL(INDEX)
-  return win
 }
 
 function exportDataMenu (app, name, ext) {

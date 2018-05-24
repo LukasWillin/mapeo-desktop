@@ -3,24 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <title>Mapeo</title>
+    <link rel='stylesheet' href='node_modules/mapeo-id-bmf/dist/iD.css'>
+    <link rel='stylesheet' href='static/css/base.css'>
+    <link rel='stylesheet' href='css/mapeo.css'>
+    <link rel='stylesheet' href='css/iD-restyle.css'>
 
     <meta name='apple-mobile-web-app-capable' content='yes'/>
     <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent'/>
-
     <script src='node_modules/mapeo-id-bmf/dist/iD.js'></script>
-
-    <link rel='stylesheet' href='node_modules/mapeo-id-bmf/dist/iD.css'>
-    <link rel='stylesheet' href='css/mapeo.css'>
-    <link rel='stylesheet' href='css/iD-restyle.css'>
   </head>
   <body>
-    <div id="welcome" style="display: none;">
-    </div>
-    <div id="overlay"  style="visibility: hidden;">
-    </div>
-    <div id="container"></div>
+    <div id="root" class="full"></div>
     <script>
-      require('./browser/main.js')
+      require('./static/build.js')
     </script>
   </body>
 </html>

@@ -6,11 +6,12 @@ node_js:
 os:
   - osx
 
-# latest npm
+# TODO: npm@4 was producing broken builds; maybe this works with latest npm?
 before_install:
   - npm install -g npm@3
 
 script:
+  - npm run build
   - npm run rebuild-leveldb
   - node bin/package_macos.js
   - node bin/create_macos_dmg.js

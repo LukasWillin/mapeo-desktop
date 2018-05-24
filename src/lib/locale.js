@@ -9,9 +9,9 @@ module.exports =  {
   load: load
 }
 
-function load () {
+function load (lang) {
   var english = read('en')
-  var locale = app.getLocale()
+  var locale = lang || app.getLocale()
   locale = locale.split('-')[0]
   var messages
   try {
@@ -28,6 +28,6 @@ function load () {
 }
 
 function read (locale) {
-  var localePath = path.join(__dirname, '..', 'locales', locale + '.json')
+  var localePath = path.join(__dirname, '..', '..', 'locales', locale + '.json')
   return JSON.parse(fs.readFileSync(localePath, 'utf-8'));
 }
