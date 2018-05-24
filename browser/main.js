@@ -35,7 +35,7 @@ updateSettings()
 
 var serverUrl = 'http://' + remote.getGlobal('osmServerHost')
 var id = iD.Context()
-  .assetPath('node_modules/id-mapeo/dist/')
+  .assetPath('node_modules/mapeo-id-bmf/dist/')
   .preauth({url: serverUrl})
   .minEditableZoom(14)
 

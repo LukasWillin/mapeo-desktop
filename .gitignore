@@ -2,3 +2,5 @@ node_modules
 vendor
 dist
 examples/.dat
+git_modules
+package-lock.json

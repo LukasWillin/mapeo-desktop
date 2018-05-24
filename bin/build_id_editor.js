@@ -2,7 +2,7 @@ var fs = require('fs-extra')
 var path = require('path')
 var mkdirp = require('mkdirp')
 
-var idPath = path.dirname(require.resolve('id-mapeo/package.json'))
+var idPath = path.dirname(require.resolve('mapeo-id-bmf/package.json'))
 var pkg = require('../package.json')
 var idDistPath = path.join(idPath, 'dist')
 var dstPath = path.resolve(__dirname, '../vendor/iD')

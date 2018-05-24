@@ -5,7 +5,7 @@ var path = require('path')
 
 var distFolder = path.join(__dirname, '..', 'dist')
 var pkg = require(path.join('..', 'package.json'))
-var buildFolder = path.join(distFolder, 'Mapeo-win32-x64')
+var buildFolder = path.join(distFolder, 'MapeoBMF-win32-x64')
 var installerFolder = path.join(distFolder, 'installer-win-x64')
 
 rimraf(installerFolder)
@@ -19,8 +19,8 @@ electronInstaller.createWindowsInstaller({
 
   description: pkg.productDescription,
   authors: pkg.author,
-  name: 'Mapeo',
-  exe: 'Mapeo.exe',
+  name: 'MapeoBMF',
+  exe: 'MapeoBMF.exe',
   setupExe: 'Installar_Mapeo_' + pkg.version + '_Windows.exe',
   iconUrl: 'https://raw.githubusercontent.com/digidem/mapeo-desktop/master/static/mapeo_installer.ico',
   version: pkg.version,

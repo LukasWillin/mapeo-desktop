@@ -1,0 +1,21 @@
+
+div#save-wrap.button-wrap.col1 {
+    margin-right: 161px;
+}
+
+.button-wrap button:only-child {
+    border-radius: 4px 0px 0px 4px;
+}
+
+div.save-icon-wrap {
+    padding-top: 10px;
+}
+
+span.label.saveTitle {
+    vertical-align: top;
+}
+
+span.label.saveNumChange {
+    padding-top: 10px;
+    border-radius: 0px 0px 0px 0;
+}
